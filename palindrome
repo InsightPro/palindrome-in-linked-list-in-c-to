@@ -1,0 +1,52 @@
+#include<stdio.h>
+
+struct Node{
+    char data;
+    struct Node *next;
+};
+
+
+int main(){
+    struct Node *a = (struct Node*)malloc(sizeof(struct Node));
+    struct Node *b = (struct Node*)malloc(sizeof(struct Node));
+    struct Node *c = (struct Node*)malloc(sizeof(struct Node));
+    struct Node *d = (struct Node*)malloc(sizeof(struct Node));
+    struct Node *e = (struct Node*)malloc(sizeof(struct Node));
+
+    a->data = 'm';
+    b->data = 'o';
+    c->data = 'o';
+    d->data = 'o';
+    e->data = 'm';
+
+    a->next = b;
+    b->next = c;
+    c->next = d;
+    d->next = e;
+    e->next = NULL;
+
+    //traverse a linked list and insert all data to an array
+    int arr[5];
+    int i=0;
+    while(a!= NULL){
+        printf("%c ", a->data);
+        arr[i] = a->data;
+        a = a->next;
+        i++;
+    }
+
+    //check isPalindrome
+    int start = 0, end = i - 1;
+    while (start <= end) {
+        if (arr[start] != arr[end]) {
+            printf("The linked list is not a palindrome.\n");
+            return;
+        }
+        start++;
+        end--;
+    }
+    printf("The linked list is a palindrome.\n");
+
+
+    return 0;
+}
